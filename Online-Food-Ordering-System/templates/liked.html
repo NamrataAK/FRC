@@ -255,11 +255,11 @@ imageAnimation
 .most
 {
 	height:200px;
-	max-height:200px;
+	max-height:40px;
 	vertical-align:middle;
 	display:inline-block;
 	font-size:20px;
-	margin-left:20px;
+	margin-left:40px;
 	margin-right:20px;
 	font-weight:bold;
 	font-family:"Architects Daughter";
@@ -272,6 +272,7 @@ imageAnimation
   transition: .5s ease;
   backface-visibility: hidden;
 	margin-right:20px;
+	margin-left:20px;
  }
 
 .middle {
@@ -297,7 +298,21 @@ imageAnimation
   font-size: 25px; 
 	font-weight:bold;
   margin-right:380px;
+  
  font-family:Indie Flower;
+}
+
+.info {
+	
+	height:200px;
+	max-height:40px;
+	display:inline-block;
+	font-size:20px;
+	margin-left:20px;
+	margin-right:20px;
+	font-weight:bold;
+  
+
 }
 </style>
 
@@ -346,8 +361,8 @@ JIVITVA
 
 <a href="/customer_logout" class="login_menu">LOGOUT</></a>
 <a href="/liked" class="help">LIKED</a>
-<a href="/purchased" class="help">PURCHASED</a>
 <a href="/homepage_customer" class="help">MY DISHES</a>
+<a href="/Nutrition" class="help">NUTRITION CHART</a>
 
 
 </span>
@@ -368,16 +383,27 @@ JIVITVA
 		</script>		
 
 
-<span class="most">YOUR LIKED DISHES</span>
+<span class="most">YOUR MOST LIKED DISHES</span>
+<br/>
 
-{%for x in most_ordered%}
+{% for x in most_ordered %}
+			
 <span class="container">
 
   <a href="/quantity/{{x[0]}}/{{x[1]}}/{{x[2]}}/{{x[5]}}/{{x[4]}}"><img src="{{url_for('static',filename='dish/'+x[4])}}" alt="Avatar" class="image" style="width:250px">
   <span class="middle">
-    <span class="text">{{x[2]}}<br>Rs.{{x[5]}}</span>
+    <span class="text">{{x[0]}}</span>
+	<br>
+	<span class="text">Rs. {{x[5]}}</span>
   </span></span>
 	</a>
+	<a class="info"><h4>{{x[0]}}</h4>
+	<h4>Nutrition Value: {{x[2]}}</h4>
+	<h4>Ratings :{{x[3]}}</h4>
+	
+	</a>
+	
+	
 {%endfor%}
 
 
